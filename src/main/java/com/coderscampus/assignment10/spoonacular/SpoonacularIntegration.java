@@ -1,5 +1,6 @@
 package com.coderscampus.assignment10.spoonacular;
 
+import com.coderscampus.assignment10.dto.MealTypeResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -21,7 +22,7 @@ public class SpoonacularIntegration {
                                 .build()
                                         .toUri();
 
-        ResponseEntity<String> response = rt.getForEntity(uri, String.class);
+        ResponseEntity<MealTypeResponse> response = rt.getForEntity(uri, MealTypeResponse.class);
         System.out.println(response.getBody());
     }
 }
