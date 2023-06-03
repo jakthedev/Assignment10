@@ -1,30 +1,40 @@
 package com.coderscampus.assignment10.web;
 
-import com.coderscampus.assignment10.dto.MealPlan;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.coderscampus.assignment10.dto.Meal;
+import com.coderscampus.assignment10.repository.MealRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MealPlannerController {
 
+    @Autowired
+    private MealRepository mealRepo;
+
     @PostMapping("/mealplanner")
-    public MealPlan createMealPlanner(@RequestParam String meal, @RequestParam String nutrients) {
-        MealPlan mealplan = new MealPlan();
-        mealplan.setMeals(meal);
-        mealplan.setNutrients(nutrients);
-        return mealplan;
-
+    public Meal createMealPlanner(@RequestParam String meal, @RequestParam String nutrients, Long mealId) {
+        Meal mealPlan = new Meal();
+        mealPlan.setMeals(meal);
+        mealPlan.setNutrients(nutrients);
+        mealPlan.setId(mealId);
+        mealRepo.save(mealPlan); //spoonacular
+        return mealPlan;
     }
 
-    @GetMapping("mealplanner/week")
-    public ResponseEntity<WeekResponse> getWeekMeals(String numCalories, String diet, String exclusions) {
-        public
+    @GetMapping("/mealplanner/{mealId}")
+    public Meal getMeal (@PathVariable Long mealId) {
+        System.out.print("Meal ID is: " + mealId);
+        return mealRepo.findMealById(mealId);
     }
 
-    @GetMapping("mealplanner/day")
-    public ResponseEntity<DayResponse> getDayMeals(String numCalories, String diet, String exclusions) {
 
-    }
+//    @GetMapping("mealplanner/week")
+//    public ResponseEntity<WeekResponse> getWeekMeals(String numCalories, String diet, String exclusions) {
+//        public
+//    }
+
+//    @GetMapping("mealplanner/day")
+//    public ResponseEntity<DayResponse> getDayMeals(String numCalories, String diet, String exclusions) {
+//
+//    }
 }
