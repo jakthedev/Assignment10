@@ -23,6 +23,6 @@ public class SpoonacularIntegration {
                                         .toUri();
 
         ResponseEntity<MealTypeResponse> response = rt.getForEntity(uri, MealTypeResponse.class);
-        System.out.println(response.getBody());
+        System.out.println(response);
     }
 }
