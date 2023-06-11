@@ -18,17 +18,17 @@ public class MealTypeResponse {
     private Integer servings;
     @JsonProperty("sourceUrl")
     private String sourceUrl;
-
-    public MealTypeResponse(Integer id, String title, String imageType, Integer readyInMinutes, Integer servings,
-                 String sourceUrl) {
-        super();
-        this.id = id;
-        this.title = title;
-        this.imageType = imageType;
-        this.readyInMinutes = readyInMinutes;
-        this.servings = servings;
-        this.sourceUrl = sourceUrl;
-    }
+//
+//    public MealTypeResponse(Integer id, String title, String imageType, Integer readyInMinutes, Integer servings,
+//                 String sourceUrl) {
+//        super();
+//        this.id = id;
+//        this.title = title;
+//        this.imageType = imageType;
+//        this.readyInMinutes = readyInMinutes;
+//        this.servings = servings;
+//        this.sourceUrl = sourceUrl;
+//    }
 
     public Integer getId() {
         return id;
